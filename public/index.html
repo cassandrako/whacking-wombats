@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Whacking Wombats</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ws = new WebSocket('ws://localhost:3000');
+
+            ws.onopen = () => console.log('Connected to server');
+            ws.onmessage = (event) => {
+                console.log('Message from server ', event.data);
+            };
+
+            function sendMessage(message) {
+                ws.send(message);
+            }
+
+            // now the game...
+        });
+    </script>
+</head>
+<body>
+    <h1>Whacking Wombats</h1>
+    <!-- Add your game interface here -->
+</body>
+</html>
