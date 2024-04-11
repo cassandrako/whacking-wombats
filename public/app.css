@@ -1,0 +1,35 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+#gameBoard {
+  display: grid;
+  grid-template-columns: repeat(3, 100px); 
+  grid-template-rows: repeat(2, 100px); 
+  gap: 10px; 
+  justify-content: center;
+  align-content: center;
+}
+
+.hole {
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; /* Indicates clickable items */
+  border: 2px solid #999; /* Optional: Adds a border */
+  border-radius: 50%; /* Optional: Makes the holes circular */
+  user-select: none;
+}
+
+.mole {
+  background-color: green; /* Changes color when the mole is present */
+}

@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Whacking Wombats</title>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const ws = new WebSocket('ws://localhost:3000');
-
-            ws.onopen = () => console.log('Connected to server');
-            ws.onmessage = (event) => {
-                console.log('Message from server ', event.data);
-            };
-
-            function sendMessage(message) {
-                ws.send(message);
-            }
-
-            // now the game...
-        });
-    </script>
+    <link rel="stylesheet" href="app.css">
 </head>
 <body>
-    <h1>Whacking Wombats</h1>
-    <!-- Add your game interface here -->
+    <div id="gameBoard">
+      <div class="hole" data-key="a">A</div>
+      <div class="hole" data-key="s">S</div>
+      <div class="hole" data-key="d">D</div>
+      <div class="hole" data-key="f">F</div>
+      <div class="hole" data-key="g">G</div>
+      <div class="hole" data-key="h">H</div>
+    </div>
+    <script src="game.js"></script>
 </body>
 </html>
