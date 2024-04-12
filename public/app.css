@@ -12,7 +12,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 100px); 
   grid-template-rows: repeat(2, 100px); 
-  gap: 10px; 
+  gap: 300px; 
   justify-content: center;
   align-content: center;
 }
@@ -24,12 +24,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer; /* Indicates clickable items */
-  border: 2px solid #999; /* Optional: Adds a border */
-  border-radius: 50%; /* Optional: Makes the holes circular */
+  cursor: pointer;
+  border: 2px solid #999;
+  border-radius: 50%; 
   user-select: none;
 }
 
 .mole {
-  background-color: green; /* Changes color when the mole is present */
+  background-color: green; /*temporary until illustrations r done*/
 }

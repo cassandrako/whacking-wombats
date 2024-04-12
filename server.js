@@ -27,7 +27,7 @@ wss.on('connection', (ws) => {
         setTimeout(() => {
           gameState.molePositions[hole] = false;
           broadcastGameState();
-        }, 1500); // Mole stays up for 1.5 seconds
+        }, 400); // how long it stays up -- also build a cooldown so wombat cannot spam buttons
       }
     } else if (role === 'whacker' && action === 'whack') {
       if (gameState.molePositions[hole]) {
