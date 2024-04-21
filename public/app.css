@@ -5,7 +5,10 @@ body {
   height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
+  background-image: url('../assets/landscape.png'); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
 }
 
 #gameBoard {
@@ -20,16 +23,19 @@ body {
 .hole {
   width: 100px;
   height: 100px;
-  background-color: #ccc;
+  background-image: url('/assets/hole.png'); 
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border: 2px solid #999;
+  border: 2px solid #b92020;
   border-radius: 50%; 
   user-select: none;
 }
 
 .mole {
-  background-color: green; /*temporary until illustrations r done*/
+  background-image: url('/assets/molehole.png');
+  background-size: cover;
 }
+

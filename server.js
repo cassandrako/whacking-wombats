@@ -17,7 +17,7 @@ wss.on('connection', (ws) => {
   console.log('Client connected');
 
   ws.on('message', (message) => {
-    console.log('Message received on server:', message);
+    console.log('Message received on server:', message);12
     const { role, action, hole } = JSON.parse(message);
 
     if (role === 'mole' && action === 'pop') {
