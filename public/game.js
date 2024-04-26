@@ -1,5 +1,4 @@
 const ws = new WebSocket('ws://localhost:3000');
-app.use(express.static('public'));
 
 ws.onopen = () => {
   console.log('Connected to the server');

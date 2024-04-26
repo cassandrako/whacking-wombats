@@ -16,6 +16,15 @@ app.use(express.static('public'));
 wss.on('connection', (ws) => {
   console.log('Client connected');
 
+//   const WebSocket = require('ws');
+// const wss = new WebSocket.Server({ server });
+
+// wss.on('connection', function connection(socket) {
+//   socket.on('message', function incoming(data) {
+//     console.log('Incoming data ', data);
+//   });
+// });
+
   ws.on('message', (message) => {
     console.log('Message received on server:', message);12
     const { role, action, hole } = JSON.parse(message);
