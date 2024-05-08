@@ -8,7 +8,8 @@ const wss = new WebSocket.Server({ server });
 
 let gameState = {
   molePositions: [false, false, false, false, false, false],
-  score: 0,
+  whackerScore: 0, 
+  moleScore: 0 
 };
 
 app.use(express.static('public'));
@@ -16,17 +17,8 @@ app.use(express.static('public'));
 wss.on('connection', (ws) => {
   console.log('Client connected');
 
-//   const WebSocket = require('ws');
-// const wss = new WebSocket.Server({ server });
-
-// wss.on('connection', function connection(socket) {
-//   socket.on('message', function incoming(data) {
-//     console.log('Incoming data ', data);
-//   });
-// });
-
   ws.on('message', (message) => {
-    console.log('Message received on server:', message);12
+    console.log('Message received on server:', message);
     const { role, action, hole } = JSON.parse(message);
 
     if (role === 'mole' && action === 'pop') {
@@ -36,11 +28,11 @@ wss.on('connection', (ws) => {
         setTimeout(() => {
           gameState.molePositions[hole] = false;
           broadcastGameState();
-        }, 400); // how long it stays up -- also build a cooldown so wombat cannot spam buttons
+        }, 400); // how long the mole is up
       }
     } else if (role === 'whacker' && action === 'whack') {
       if (gameState.molePositions[hole]) {
-        gameState.score++;
+        gameState.whackerScore++;  
         gameState.molePositions[hole] = false;
         broadcastGameState();
       }
@@ -49,7 +41,14 @@ wss.on('connection', (ws) => {
 });
 
 function broadcastGameState() {
-  const state = JSON.stringify({ type: 'update', gameState });
+  const state = JSON.stringify({
+    type: 'update',
+    gameState: {
+      molePositions: gameState.molePositions,
+      whackerScore: gameState.whackerScore,
+      moleScore: gameState.moleScore
+    }
+  });
   console.log('Broadcasting game state:', state);
   wss.clients.forEach((client) => {
     if (client.readyState === WebSocket.OPEN) {

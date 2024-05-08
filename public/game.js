@@ -1,3 +1,8 @@
+let whackerScore = 0;
+let moleScore = 0;
+let activeMoles = 0;
+const maxMoles = 2;
+
 const ws = new WebSocket('ws://localhost:3000');
 
 ws.onopen = () => {
@@ -32,13 +37,29 @@ document.addEventListener('keydown', (event) => {
 });
 
 function updateGameBoard(gameState) {
-  console.log('Updating game board:', gameState);
   const holes = document.querySelectorAll('.hole');
   holes.forEach((hole, index) => {
-    if (gameState.molePositions[index]) {
-      hole.classList.add('mole');
-    } else {
-      hole.classList.remove('mole');
-    }
+    hole.classList.toggle('mole', gameState.molePositions[index]);
   });
+
+  document.getElementById('whackerScore').textContent = `Whacker: ${gameState.whackerScore}`;
+  document.getElementById('moleScore').textContent = `Mole: ${gameState.moleScore}`;
 }
+
+function startTimer(duration, display) {
+  let timer = duration, seconds;
+  setInterval(function () {
+    seconds = parseInt(timer % 60, 10);
+    display.textContent = seconds;
+
+    if (--timer < 0) {
+      timer = duration;
+    }
+  }, 1000);
+}
+
+window.onload = function () {
+  let thirtySeconds = 30,
+      display = document.getElementById('timer');
+  startTimer(thirtySeconds, display);
+};

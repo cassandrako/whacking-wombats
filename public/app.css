@@ -15,26 +15,26 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
   grid-template-rows: repeat(2, 1fr); 
-  width: 100%; /* Adjust width as needed */
-  height: 45vh; /* Adjust height based on the desired spacing */
+  width: 100%; 
+  height: 45vh; 
   justify-content: center;
   align-content: center;
-  position: relative; /* Add positioning context */
-  top: 50%; /* Adjust positioning to center the board vertically */
-  transform: translateY(-50%); /* Adjust to account for the height of the game board */
+  position: relative; 
+  top: 50%; 
+  transform: translateY(-50%);
 }
 
 .hole {
   width: 125px;
   height: 100px; 
   margin-left: 40%;
-  background-image: url('/assets/hole.png'); 
+  background-image: url('/assets/newHole.png'); 
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border: 2px solid #b92020;
+  /* border: 2px solid #b92020; */
   border-radius: 50%; 
   user-select: none;
 }
@@ -47,7 +47,23 @@ body {
 .hole:nth-child(6) { grid-column: 3; grid-row: 2; }
 
 .mole {
-  /* background-image: url('/assets/molehole.png'); */
-  background-color: black;
+  background-image: url('/assets/newMole.png');
+  /* background-color: black; */
   background-size: cover;
+}
+
+#scoreboard {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  font-size: 1.5em;
+}
+
+#timer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  font-size: 1.5em;
 }
