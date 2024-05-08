@@ -13,21 +13,24 @@ body {
 
 #gameBoard {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);  
   grid-template-rows: repeat(2, 1fr); 
+  row-gap: 0px;
   width: 100%; 
   height: 45vh; 
   justify-content: center;
   align-content: center;
   position: relative; 
-  top: 50%; 
+  top: 10%; 
   transform: translateY(-50%);
+  transform: translateX(-5%);
 }
 
+
 .hole {
-  width: 125px;
-  height: 100px; 
-  margin-left: 40%;
+  width: 300px;
+  height: 200px; 
+  margin-left: 38%;
   background-image: url('/assets/newHole.png'); 
   background-size: cover;
   display: flex;
