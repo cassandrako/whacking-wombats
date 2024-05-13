@@ -1,18 +1,17 @@
 const SerialPort = require('serialport');
 const Readline = require('@serialport/parser-readline');
+const WebSocket = require('ws');
 
-// "COM3" for windows, const port = new SerialPort('/dev/tty.usbmodem14101', { baudRate: 9600 }); if mac
-const port = new SerialPort('COM3', { baudRate: 9600 });
-
+const port = new SerialPort('COM5', { baudRate: 9600 });
 const parser = port.pipe(new Readline({ delimiter: '\n' }));
+const ws = new WebSocket('ws://localhost:3000');
 
 parser.on('data', data => {
-    console.log('Button pressed on pin:', data.trim());
-    // Broadcast the button press to all connected WebSocket clients
-    wss.clients.forEach(function each(client) {
-        if (client.readyState === WebSocket.OPEN) {
-            client.send(JSON.stringify({ type: 'buttonPress', pin: data.trim() }));
-        }
-    });
+    console.log("Received from Arduino:", data.trim());
+    if (ws.readyState === WebSocket.OPEN) {
+        ws.send(data.trim()); 
+        console.log("Sent to WebSocket:", data.trim()); 
+    }
 });
 
+ws.on('open', () => console.log('Connected to WebSocket server'));

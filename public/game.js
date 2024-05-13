@@ -17,6 +17,7 @@ ws.onmessage = (event) => {
   }
 };
 
+
 document.addEventListener('keydown', (event) => {
   const key = event.key.toLowerCase();
   const moleKeys = ['1', '2', '3', '4', '5', '6'];

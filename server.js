@@ -1,10 +1,14 @@
 const express = require('express');
 const WebSocket = require('ws');
 const http = require('http');
+const SerialPort = require('serialport');
+
 
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
+// require('./arduinoSerialReader.js');
+
 
 let gameState = {
   molePositions: [false, false, false, false, false, false],
